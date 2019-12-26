@@ -1,32 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ITRepairWorkshopWebApi.Models
 {
-    public class ReserveOPart
+    public class ImpartPart
     {
         [Key]
-        public int PartID { get; set; } 
-
+        public  int PartID { get; set; }
+       
         [Display(Name = "Category:")]
-        public DeviceCategory DeviceCategory { get; set; }
+        public  DeviceCategory DeviceCategory { get; set; }
 
         [Display(Name = "Brand:")]
-        public CompanyBrand Brand { get; set; }
+        public  CompanyBrand CompanyBrand { get; set; }
 
         [Display(Name = "Model:")]
         [Required(ErrorMessage = "Enter model of device!")]
         public string ModelOfPart { get; set; }
 
-        //  id of the part
-        public string Guid => DeviceCategory + "_" + Brand + ModelOfPart.TrimStart('_') + PartID;
+
+        //  id of the partModelOfPart.TrimStart('-') + DeviceCategory + CompanyBrand + PartID;
+        public string PartGuid { get; set; } =$"PartID";
+   
 
         [Required]
-        [Display(Name = "Description:")]
-        public string Description { get; set; }
+        [Display(Name = "Title:")]
+        public string Title { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
@@ -58,19 +61,25 @@ namespace ITRepairWorkshopWebApi.Models
         //add the images
         public ICollection<Image> Images { get; set; }
      
-        public ReserveOPart()
+        public ImpartPart()
         {
-            this.Images = new List<Image>();
-           
+            this.Images = new List<Image>(); 
         }
-   
+
+        // One to one -impartPART AND PART
+        public virtual Part Part { get; set; }
+
         [Display(Name = "Status:")]
-        public StatusOfPart StatusOfPart { get; set; }
+        public StatusOfPart StatusOfPart { get; set; } = StatusOfPart.Reserve;
 
         [Display(Name = "Source:")]
-        public SourceOfPart SourceOfPart { get; set; }
+        public SourceOfPart SourceOfPart { get; set; } = SourceOfPart.Purchase;
+        // Two differents TYPES Of parts  
+        [Display(Name = "Type:")]
+        public TypeOfPart TypeOfPart { get; set; }
 
     }
-    public enum StatusOfPart { Delivery, Reserve, Retur }
+    public enum StatusOfPart { Delivery=0, Reserve=1, Retur=2 }
     public enum SourceOfPart { Purchase, Damage }
+    public enum TypeOfPart { Electronic, Accessories }
 }

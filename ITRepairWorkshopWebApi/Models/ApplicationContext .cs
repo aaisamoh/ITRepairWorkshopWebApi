@@ -12,7 +12,7 @@ namespace ITRepairWorkshopWebApi.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Device> Devices { get; set; }
-        public DbSet<ReserveOPart> ReserveOParts { get; set; }
+        public DbSet<ImpartPart> ImpartParts { get; set; }
         public DbSet<Part> Parts { get; set; }
         public DbSet<WorkShop> WorkShops { get; set; }
         public DbSet<Expense> Expenses { get; set; }

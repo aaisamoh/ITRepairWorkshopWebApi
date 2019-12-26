@@ -18,7 +18,7 @@ namespace ITRepairWorkshopWebApi.Models
                      {
                          Name = "Amad",
                          Email = "aamad@gmail.com",
-                         Telephone = "138898129", HaveAccess=true
+                         Telephone = "138898129", HaveAccess=HaveAccess.Deny
                      }
 
                     );

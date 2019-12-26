@@ -25,7 +25,9 @@ namespace ITRepairWorkshopWebApi.Models
         [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         public DateTime ExpectedDeliveryDate { get; set; } = DateTime.Now.AddDays(3);
 
-       public virtual Device Device { get; set; }// One to one (DEVICE-WORKSHOP)
+        // many to ONE relationship beetwen two entites(WORKSHOP -part)
+        public ICollection<Part> Parts { get; set; }
+        public virtual Device Device { get; set; }// One to one (DEVICE-WORKSHOP)
     }
         public enum Processing { Waiting, Ready, Delivery, Retur }// WHAT IS HAPPEND WITH A DEVICE
 }

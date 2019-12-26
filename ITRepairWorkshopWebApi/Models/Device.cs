@@ -62,7 +62,7 @@ namespace ITRepairWorkshopWebApi.Models
     //From where are the devices came to the store.
     public enum SourceOfdevice { Purchase,Servicing }
     // Damage-the device need servicing.
-    public enum StatusOfDevice { Working, Notworking }
+    public enum StatusOfDevice { Working, Notworking,Unkown }
     public enum CompanyBrand { Samsung, Sony,HP,Apple,Iphone,Asus,LG,Acer,Lenovo,Dell,Toshibo,Siemens,Compag,Hauwei,Other }
     public enum DeviceCategory { Mobile,Computer,Ipad,PS,Printer,TV,Other}
 }

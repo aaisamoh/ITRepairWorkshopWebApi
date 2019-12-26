@@ -26,25 +26,28 @@ namespace ITRepairWorkshopWebApi.Models
         [Display(Name = "City:")]
         public string City { get; set; } = null;
 
+        [Display(Name = "Password:")]
+        public string Password { get; set; } = null;
+
         [Display(Name = "Email:")]
         [Required(ErrorMessage = "Enter email !")]
         [EmailAddress(ErrorMessage = "Invalid address!")]
         public string Email { get; set; }
 
         [Display(Name = "Have you Access ?:")]
-        public bool HaveAccess { get; set; } = false; //Allow or deny access to the Internet
+        public HaveAccess HaveAccess { get; set; } = 0; //Allow or deny access to the Internet
        // [Display(Name = "Group:")]
        // public group Group  { get; set; }
 
         public ICollection<Device> Devices { get; set; }
-        public ICollection<ReserveOPart> ReserveOParts { get; set; }
+        public ICollection<ImpartPart> ReserveOParts { get; set; }
 
         public Client()
         {
             Devices = new List<Device>();
-            ReserveOParts = new List<ReserveOPart>();
+            ReserveOParts = new List<ImpartPart>();
         }
       
     }
-   // public enum group { Device, Part } //client that belongs to a group
+    public enum HaveAccess { Deny,Allow } //client that belongs to a group
 }
