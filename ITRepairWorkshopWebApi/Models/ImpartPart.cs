@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ITRepairWorkshopWebApi.Models
 {
@@ -77,9 +74,11 @@ namespace ITRepairWorkshopWebApi.Models
         // Two differents TYPES Of parts  
         [Display(Name = "Type:")]
         public TypeOfPart TypeOfPart { get; set; }
+        public bool TodoUpdate { get; set; }// Allow or Deny
 
     }
     public enum StatusOfPart { Delivery=0, Reserve=1, Retur=2 }
     public enum SourceOfPart { Purchase, Damage }
-    public enum TypeOfPart { Electronic, Accessories }
+    public enum TypeOfPart { Electronic=0, Accessories=1 }
+   
 }
